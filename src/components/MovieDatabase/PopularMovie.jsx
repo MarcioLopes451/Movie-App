@@ -13,7 +13,7 @@ export default function PopularMovie() {
   }, []);
 
   return (
-    <div>
+    <div className="mt-[60px] mx-[20px]">
       {data.map((res, id) => (
         <div key={id}>
           <h1>{res.original_title}</h1>
