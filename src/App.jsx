@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import MobileNavbar from "./components/Navbar/MobileNavbar";
 import PopularMovie from "./components/MovieDatabase/PopularMovie";
+import Search from "./components/Search/Search";
+//import { Route, Routes } from "react-router-dom";
+//import Search from "./components/Search/Search";
 
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
   const breakPoint = 768;
   //const lg = 1024;
-  const apiKey = "62c0121e68188863d4bc023757512a1c";
   const [data, setData] = useState([]);
-  const [query, setQuery] = useState("");
-  const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
 
   useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);
@@ -20,7 +20,7 @@ function App() {
     };
   }, []);
 
-  function searchMovies() {
+  function searchMovies(apiUrl) {
     fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => {
@@ -29,33 +29,15 @@ function App() {
       .catch((err) => console.error("err" + err));
   }
 
-  useEffect(() => {
-    if (query.trim() !== "") {
-      searchMovies();
-    }
-  }, [query]);
-
-  function enter(e) {
-    e.preventDefault();
-    searchMovies();
-  }
-
   return (
     <>
       {" "}
       <div>{width < breakPoint ? <MobileNavbar /> : <Navbar />}</div>{" "}
       {/* search bar */}
       <div className="mt-[65px] mx-[20px]">
-        <form onSubmit={enter}>
-          <input
-            type="text"
-            placeholder="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        </form>
+        <Search onSearch={searchMovies} />
       </div>
-      {query == "" ? (
+      {data.length == 0 ? (
         <PopularMovie />
       ) : (
         <div>

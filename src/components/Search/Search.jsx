@@ -1,23 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-export default function Search() {
-  const apiKey = "62c0121e68188863d4bc023757512a1c";
-  const [data, setData] = useState([]);
+// eslint-disable-next-line react/prop-types
+export default function Search({ onSearch }) {
   const [query, setQuery] = useState("");
-  const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
+  const apiKey = "62c0121e68188863d4bc023757512a1c";
 
-  function searchMovies() {
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((data) => console.log(data.results))
-      .catch((err) => console.error("err" + err));
-  }
-
-  useEffect(() => {
+  const searchMovie = () => {
     if (query.trim() !== "") {
-      searchMovies();
+      onSearch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`
+      );
     }
-  }, [query]);
+  };
 
   return (
     <div>
@@ -27,13 +21,9 @@ export default function Search() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <div>
-        {data.map((data) => {
-          <div key={data}>
-            <div>{data.original_title}</div>
-          </div>;
-        })}
-      </div>
+      <button className="bg-white mx-10" onClick={searchMovie}>
+        Search
+      </button>
     </div>
   );
 }
