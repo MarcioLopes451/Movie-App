@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import rating from "../../../images/216411_star_icon (2).png";
 
-export default function PopularMovie() {
+export default function TopRatedMovies() {
   const [data, setData] = useState([]);
   const apiKey = "62c0121e68188863d4bc023757512a1c";
-  const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
+  const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
 
   useEffect(() => {
     fetch(url)
