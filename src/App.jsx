@@ -7,7 +7,7 @@ import rating from "../images/216411_star_icon (2).png";
 import { Route, Routes } from "react-router-dom";
 import TopRatedMovies from "./components/MovieDatabase/TopRatedMovies";
 import UpComingMovies from "./components/MovieDatabase/UpComingMovies";
-//import Search from "./components/Search/Search";
+import MovieDetail from "./pages/MovieDetail";
 
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -51,6 +51,7 @@ function App() {
             path="/Movie-App/UpComingMovies"
             element={<UpComingMovies />}
           />
+          <Route path="/Movie-App/movie/:movieId" element={<MovieDetail />} />
         </Routes>
       ) : (
         <div className="mt-[60px] mx-[20px]">
