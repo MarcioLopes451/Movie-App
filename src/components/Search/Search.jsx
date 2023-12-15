@@ -10,6 +10,7 @@ export default function Search({ onSearch }) {
       onSearch(
         `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`
       );
+      setQuery("");
     }
   };
 
