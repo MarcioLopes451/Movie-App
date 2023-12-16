@@ -7,13 +7,14 @@ import rating from "../images/216411_star_icon (2).png";
 import { Route, Routes, Link } from "react-router-dom";
 import TopRatedMovies from "./components/MovieDatabase/TopRatedMovies";
 import UpComingMovies from "./components/MovieDatabase/UpComingMovies";
+import Footer from "./components/Footer/Footer";
 import MovieDetail from "./pages/MovieDetail";
 import ActorMovies from "./pages/ActorMovies";
+import noMoviePoster from "../images/no-poster-available.jpg";
 
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
   const breakPoint = 768;
-  //const lg = 1024;
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -62,7 +63,11 @@ function App() {
               <div key={id}>
                 <Link to={`/Movie-App/movie/${res.id}`}>
                   <img
-                    src={`https://image.tmdb.org/t/p/w500${res.poster_path}`}
+                    src={
+                      res.poster_path == null
+                        ? noMoviePoster
+                        : `https://image.tmdb.org/t/p/w500${res.poster_path}`
+                    }
                     alt="poster"
                     className="w-[150px] h-[255px] rounded-lg"
                   />
@@ -73,7 +78,7 @@ function App() {
                       alt="star rating"
                       className="w-[30px] h-[30px]"
                     />
-                    <h3>{res.vote_average}</h3>
+                    <h3>{Math.floor(res.vote_average)}</h3>
                   </div>
                 </Link>
               </div>
@@ -81,6 +86,7 @@ function App() {
           </div>
         </div>
       )}
+      <Footer />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SearchIcon from "../../../images/2024633_find_magnifier_research_search_icon.png";
 
 // eslint-disable-next-line react/prop-types
 export default function Search({ onSearch }) {
@@ -15,15 +16,16 @@ export default function Search({ onSearch }) {
   };
 
   return (
-    <div>
+    <div className="flex items-center justify-start gap-5">
       <input
         type="text"
-        placeholder="search"
+        placeholder="search movie..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        className="bg-black text-white placeholder:text-white h-[30px] rounded-lg px-2"
       />
-      <button className="bg-white mx-10" onClick={searchMovie}>
-        Search
+      <button onClick={searchMovie}>
+        <img src={SearchIcon} className="w-[40px] h-[40px]" />
       </button>
     </div>
   );

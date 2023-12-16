@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import rating from "../../../images/216411_star_icon (2).png";
 import { Link } from "react-router-dom";
+import noMoviePoster from "../../../images/no-poster-available.jpg";
+import "@fontsource/inria-serif";
 
 export default function PopularMovie() {
   const [data, setData] = useState([]);
@@ -20,23 +22,29 @@ export default function PopularMovie() {
 
   return (
     <div className="mt-[60px] mx-[20px]">
-      <div className="flex flex-wrap flex-row justify-between gap-4">
+      <div className="flex flex-wrap flex-row justify-between gap-4 font-Inria-Serif">
         {data.map((res) => (
           <div key={res.id}>
             <Link to={`/Movie-App/movie/${res.id}`}>
               <img
-                src={`https://image.tmdb.org/t/p/w500${res.poster_path}`}
+                src={
+                  res.poster_path == null
+                    ? noMoviePoster
+                    : `https://image.tmdb.org/t/p/w500${res.poster_path}`
+                }
                 alt="poster"
                 className="w-[150px] h-[255px] rounded-lg"
               />
-              <h3 className="text-center w-[150px]">{res.title}</h3>
-              <div className="flex items-center justify-center">
+              <h3 className="text-center w-[150px] mt-4 text-xl">
+                {res.title}
+              </h3>
+              <div className="flex items-center justify-center mt-2">
                 <img
                   src={rating}
                   alt="star rating"
                   className="w-[30px] h-[30px]"
                 />
-                <h3>{res.vote_average}</h3>
+                <h3 className="text-xl">{Math.floor(res.vote_average)}</h3>
               </div>
             </Link>
           </div>

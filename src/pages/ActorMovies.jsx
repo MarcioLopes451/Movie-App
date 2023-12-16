@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import rating from "../../images/216411_star_icon (2).png";
+import noMoviePoster from "../../images/no-poster-available.jpg";
 
 export default function ActorMovies() {
   const [actor, setActor] = useState(null);
@@ -33,43 +34,68 @@ export default function ActorMovies() {
   return (
     <div className="mt-5">
       {actor ? (
-        <div>
+        <div className="flex flex-col justify-center items-center font-Inria-Serif">
           <img
             src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
             alt="movie poster"
             className="w-[300px] h-[500px] rounded-lg"
           />
-          <p>{actor.name}</p>
-          <p>Place of Birth: {actor.place_of_birth}</p>
-          <div>
-            <h3>biography</h3>
-            <p>{actor.biography.slice(0, 300)}</p>
+          <p className="mt-5 font-bold text-2xl">{actor.name}</p>
+          <p className="mt-2 italic">{actor.place_of_birth}</p>
+          <div className="text-center px-2 mt-5">
+            {actor.biography === "" ? (
+              <h3 className="italic">No Biography for {actor.name}</h3>
+            ) : (
+              <div>
+                <h3 className="font-bold text-xl">biography</h3>
+                <div className="mt-3">
+                  {actor.biography.slice(
+                    0,
+                    actor.biography.indexOf(
+                      ".",
+                      actor.biography.indexOf(".") + 1
+                    )
+                  )}
+                  .
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="mt-5">
             {movie ? (
               <div className="flex justify-center items-center flex-col flex-wrap">
-                <h3>The Movies {actor.name} has featured in</h3>
-                {movie.cast.slice(0, 10).map((movies) => (
-                  <div key={movies.id}>
-                    <Link to={`/Movie-App/movie/${movies.id}`}>
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
-                        alt="poster"
-                        className="w-[150px] h-[255px] rounded-lg"
-                      />
-                      <h3 className="text-center w-[150px]">{movies.title}</h3>
-                      <div className="flex items-center justify-center">
+                <h3 className="font-bold">
+                  Movies {actor.name} has featured in:
+                </h3>
+                <div className="flex flex-wrap flex-row justify-between gap-4 mx-[20px] mt-10">
+                  {movie.cast.slice(0, 10).map((movies) => (
+                    <div key={movies.id}>
+                      <Link to={`/Movie-App/movie/${movies.id}`}>
                         <img
-                          src={rating}
-                          alt="star rating"
-                          className="w-[30px] h-[30px]"
+                          src={
+                            movies.poster_path == null
+                              ? noMoviePoster
+                              : `https://image.tmdb.org/t/p/w500${movies.poster_path}`
+                          }
+                          alt="poster"
+                          className="w-[150px] h-[255px] rounded-lg"
                         />
-                        <h3>{movies.vote_average}</h3>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
+                        <h3 className="text-center w-[150px]">
+                          {movies.title}
+                        </h3>
+                        <div className="flex items-center justify-center">
+                          <img
+                            src={rating}
+                            alt="star rating"
+                            className="w-[30px] h-[30px]"
+                          />
+                          <h3>{Math.floor(movies.vote_average)}</h3>
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
               </div>
             ) : null}
           </div>
