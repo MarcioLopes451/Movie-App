@@ -68,7 +68,7 @@ export default function ActorMovies() {
                 <h3 className="font-bold">
                   Movies {actor.name} has featured in:
                 </h3>
-                <div className="flex flex-wrap flex-row justify-between gap-4 mx-[20px] mt-10">
+                <div className="flex flex-wrap flex-row justify-between gap-4 mx-[20px] mt-10 md:justify-normal md:gap-[60px]">
                   {movie.cast.slice(0, 10).map((movies) => (
                     <div key={movies.id}>
                       <Link to={`/Movie-App/movie/${movies.id}`}>
@@ -79,9 +79,9 @@ export default function ActorMovies() {
                               : `https://image.tmdb.org/t/p/w500${movies.poster_path}`
                           }
                           alt="poster"
-                          className="w-[150px] h-[255px] rounded-lg"
+                          className="w-[150px] h-[255px] rounded-lg md:w-[200px] md:h-[340px]"
                         />
-                        <h3 className="text-center w-[150px]">
+                        <h3 className="text-center w-[150px] md:w-[200px]">
                           {movies.title}
                         </h3>
                         <div className="flex items-center justify-center">
