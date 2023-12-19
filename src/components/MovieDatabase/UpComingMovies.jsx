@@ -30,7 +30,7 @@ export default function UpComingMovies() {
                 alt="poster"
                 className="w-[150px] h-[255px] rounded-lg md:w-[200px] md:h-[340px] lg:w-[270px] lg:h-[459px]"
               />
-              <h3 className="text-center w-[150px] mt-4 text-xl md:w-[200px] lg:w-full">
+              <h3 className="text-center w-[150px] mt-4 text-xl md:w-[200px] lg:w-[270px]">
                 {res.title}
               </h3>
               <div className="flex items-center justify-center mt-2">

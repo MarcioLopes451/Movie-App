@@ -34,7 +34,7 @@ export default function ActorMovies() {
   return (
     <div className="mt-5">
       {actor ? (
-        <div className="flex flex-col justify-center items-center font-Inria-Serif">
+        <div className="flex flex-col justify-center items-center font-Inria-Serif lg:items-start">
           <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start gap-3 lg:mx-[20px]">
             <img
               src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
