@@ -35,31 +35,35 @@ export default function ActorMovies() {
     <div className="mt-5">
       {actor ? (
         <div className="flex flex-col justify-center items-center font-Inria-Serif">
-          <img
-            src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-            alt="movie poster"
-            className="w-[300px] h-[500px] rounded-lg"
-          />
-          <p className="mt-5 font-bold text-2xl">{actor.name}</p>
-          <p className="mt-2 italic">{actor.place_of_birth}</p>
-          <div className="text-center px-2 mt-5">
-            {actor.biography === "" ? (
-              <h3 className="italic">No Biography for {actor.name}</h3>
-            ) : (
-              <div>
-                <h3 className="font-bold text-xl">biography</h3>
-                <div className="mt-3">
-                  {actor.biography.slice(
-                    0,
-                    actor.biography.indexOf(
-                      ".",
-                      actor.biography.indexOf(".") + 1
-                    )
-                  )}
-                  .
-                </div>
+          <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start gap-3 lg:mx-[20px]">
+            <img
+              src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+              alt="movie poster"
+              className="w-[300px] h-[500px] rounded-lg"
+            />
+            <div className="flex justify-center items-center flex-col lg:items-start">
+              <p className="mt-5 font-bold text-2xl">{actor.name}</p>
+              <p className="mt-2 italic">{actor.place_of_birth}</p>
+              <div className="text-center px-2 mt-5 lg:text-start lg:px-0">
+                {actor.biography === "" ? (
+                  <h3 className="italic">No Biography for {actor.name}</h3>
+                ) : (
+                  <div>
+                    <h3 className="font-bold text-xl">biography</h3>
+                    <div className="mt-3">
+                      {actor.biography.slice(
+                        0,
+                        actor.biography.indexOf(
+                          ".",
+                          actor.biography.indexOf(".") + 1
+                        )
+                      )}
+                      .
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
 
           <div className="mt-5">
@@ -68,7 +72,7 @@ export default function ActorMovies() {
                 <h3 className="font-bold">
                   Movies {actor.name} has featured in:
                 </h3>
-                <div className="flex flex-wrap flex-row justify-between gap-4 mx-[20px] mt-10 md:justify-normal md:gap-[60px]">
+                <div className="flex flex-wrap flex-row justify-between gap-4 mx-[20px] mt-10 md:justify-normal md:gap-[60px] lg:justify-evenly">
                   {movie.cast.slice(0, 10).map((movies) => (
                     <div key={movies.id}>
                       <Link to={`/Movie-App/movie/${movies.id}`}>
@@ -79,9 +83,9 @@ export default function ActorMovies() {
                               : `https://image.tmdb.org/t/p/w500${movies.poster_path}`
                           }
                           alt="poster"
-                          className="w-[150px] h-[255px] rounded-lg md:w-[200px] md:h-[340px]"
+                          className="w-[150px] h-[255px] rounded-lg md:w-[200px] md:h-[340px] lg:w-[270px] lg:h-[459px]"
                         />
-                        <h3 className="text-center w-[150px] md:w-[200px]">
+                        <h3 className="text-center w-[150px] md:w-[200px] lg:w-full">
                           {movies.title}
                         </h3>
                         <div className="flex items-center justify-center">

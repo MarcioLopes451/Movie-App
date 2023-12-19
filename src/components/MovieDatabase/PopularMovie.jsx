@@ -22,7 +22,7 @@ export default function PopularMovie() {
 
   return (
     <div className="mt-[60px] mx-[20px]">
-      <div className="flex flex-wrap flex-row justify-between gap-4 font-Inria-Serif md:justify-normal md:gap-[60px]">
+      <div className="flex flex-wrap flex-row justify-between gap-4 font-Inria-Serif md:justify-normal md:gap-[60px] lg:justify-evenly">
         {data.map((res) => (
           <div key={res.id}>
             <Link to={`/Movie-App/movie/${res.id}`}>
@@ -33,9 +33,9 @@ export default function PopularMovie() {
                     : `https://image.tmdb.org/t/p/w500${res.poster_path}`
                 }
                 alt="poster"
-                className="w-[150px] h-[255px] rounded-lg md:w-[200px] md:h-[340px]"
+                className="w-[150px] h-[255px] rounded-lg md:w-[200px] md:h-[340px] lg:w-[270px] lg:h-[459px]"
               />
-              <h3 className="text-center w-[150px] mt-4 text-xl md:w-[200px]">
+              <h3 className="text-center w-[150px] mt-4 text-xl md:w-[200px] lg:w-full">
                 {res.title}
               </h3>
               <div className="flex items-center justify-center mt-2">
