@@ -68,37 +68,39 @@ export default function ActorMovies() {
 
           <div className="mt-5">
             {movie ? (
-              <div className="flex justify-center items-center flex-col flex-wrap">
-                <h3 className="font-bold">
+              <div>
+                <h3 className="font-bold text-center">
                   Movies {actor.name} has featured in:
                 </h3>
-                <div className="flex flex-wrap flex-row justify-between gap-4 mx-[20px] mt-10 md:justify-normal md:gap-[60px] lg:justify-evenly">
-                  {movie.cast.slice(0, 10).map((movies) => (
-                    <div key={movies.id}>
-                      <Link to={`/Movie-App/movie/${movies.id}`}>
-                        <img
-                          src={
-                            movies.poster_path == null
-                              ? noMoviePoster
-                              : `https://image.tmdb.org/t/p/w500${movies.poster_path}`
-                          }
-                          alt="poster"
-                          className="w-[150px] h-[255px] rounded-lg md:w-[200px] md:h-[340px] lg:w-[270px] lg:h-[459px]"
-                        />
-                        <h3 className="text-center w-[150px] md:w-[200px] lg:w-full">
-                          {movies.title}
-                        </h3>
-                        <div className="flex items-center justify-center">
+                <div className="flex justify-center items-center flex-col flex-wrap">
+                  <div className="flex flex-wrap flex-row justify-between gap-4 mx-[20px] mt-10 md:justify-normal md:gap-[60px] lg:justify-evenly">
+                    {movie.cast.slice(0, 10).map((movies) => (
+                      <div key={movies.id}>
+                        <Link to={`/Movie-App/movie/${movies.id}`}>
                           <img
-                            src={rating}
-                            alt="star rating"
-                            className="w-[30px] h-[30px]"
+                            src={
+                              movies.poster_path == null
+                                ? noMoviePoster
+                                : `https://image.tmdb.org/t/p/w500${movies.poster_path}`
+                            }
+                            alt="poster"
+                            className="w-[150px] h-[255px] rounded-lg md:w-[200px] md:h-[340px] lg:w-[270px] lg:h-[459px]"
                           />
-                          <h3>{Math.floor(movies.vote_average)}</h3>
-                        </div>
-                      </Link>
-                    </div>
-                  ))}
+                          <h3 className="text-center w-[150px] md:w-[200px] lg:w-[270px]">
+                            {movies.title}
+                          </h3>
+                          <div className="flex items-center justify-center">
+                            <img
+                              src={rating}
+                              alt="star rating"
+                              className="w-[30px] h-[30px]"
+                            />
+                            <h3>{Math.floor(movies.vote_average)}</h3>
+                          </div>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : null}

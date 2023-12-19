@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <div className="mt-[20px] mx-[30px]">
-      <div className="flex justify-between items-center font-Inria-Serif">
+      <div className="flex justify-between items-center font-Inria-Serif lg:items-end">
         <div className="flex items-end">
           <img
             src={Logo}
@@ -14,9 +14,15 @@ export default function Navbar() {
           <h1 className="hidden lg:block text-3xl font-bold">Cineplex</h1>
         </div>
         <div className="flex justify-between items-center text-xl gap-10 md:text-3xl">
-          <Link to="/Movie-App/">Home</Link>
-          <Link to="/Movie-App/TopRatedMovies">Top-Rated</Link>
-          <Link to="/Movie-App/UpComingMovies">Up-Coming</Link>
+          <Link to="/Movie-App/" className="hover:underline">
+            Home
+          </Link>
+          <Link to="/Movie-App/TopRatedMovies" className="hover:underline">
+            Top-Rated
+          </Link>
+          <Link to="/Movie-App/UpComingMovies" className="hover:underline">
+            Up-Coming
+          </Link>
         </div>
       </div>
     </div>

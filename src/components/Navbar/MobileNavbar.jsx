@@ -33,7 +33,7 @@ export default function MobileNavbar() {
         <img src={Logo} className="w-[70px] h-[70px]" />
         <img src={Menu} className="w-[70px] h-[70px]" onClick={handleOpen} />
         {open && (
-          <div className="absolute bg-black top-0 left-[150px] z-50 w-[260px] h-[100vh]">
+          <div className="absolute bg-black top-0 left-[150px] z-50 w-[260px] h-full">
             <img
               src={Close}
               alt="close btn"

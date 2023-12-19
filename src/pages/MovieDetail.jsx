@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import rating from "../../images/216411_star_icon (2).png";
+import noMoviePoster from "../../images/no-poster-available.jpg";
 
 export default function MovieDetail() {
   const [movie, setMovie] = useState(null);
@@ -35,7 +36,11 @@ export default function MovieDetail() {
       {movie1 ? (
         <div className="flex justify-center items-center flex-col font-Inria-Serif lg:flex-row lg:mx-[20px] lg:gap-[80px] lg:items-start">
           <img
-            src={`https://image.tmdb.org/t/p/w500${movie1.poster_path}`}
+            src={
+              movie1.poster_path == null
+                ? noMoviePoster
+                : `https://image.tmdb.org/t/p/w500${movie1.poster_path}`
+            }
             alt="movie poster"
             className="w-[300px] h-[510px] rounded-lg lg:w-[450px] lg:h-[700px]"
           />
