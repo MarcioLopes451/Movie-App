@@ -6,24 +6,37 @@ import Facebook from "../../../images/317727_facebook_social media_social_icon.p
 
 export default function Footer() {
   return (
-    <div className="mt-[100px]">
+    <div className="mt-[100px] mx-[30px]">
       <div className="flex justify-center items-center gap-10 flex-col flex-wrap font-Inria-Serif">
-        <img src={Logo} className="w-[70px] h-[70px]" />
-        <div className="flex justify-between items-center text-xl gap-10">
-          <Link to="/Movie-App/">Home</Link>
-          <Link to="/Movie-App/TopRatedMovies">Top-Rated</Link>
-          <Link to="/Movie-App/UpComingMovies">Up-Coming</Link>
+        <div className="flex justify-center items-center flex-col gap-10 lg:flex-row lg:justify-between w-full lg:items-end">
+          <div className="flex justify-center items-end">
+            <img src={Logo} className="w-[70px] h-[70px]" />
+            <h1 className="hidden lg:block text-3xl font-bold">Cineplex</h1>
+          </div>
+          <div className="flex justify-between items-center text-xl gap-10">
+            <Link to="/Movie-App/" className="hover:underline">
+              Home
+            </Link>
+            <Link to="/Movie-App/TopRatedMovies" className="hover:underline">
+              Top-Rated
+            </Link>
+            <Link to="/Movie-App/UpComingMovies" className="hover:underline">
+              Up-Coming
+            </Link>
+          </div>
         </div>
-        <p className="text-xl italic">
-          don’t live a little, Live a{" "}
-          <span className="font-bold underline">Cineplex</span>.
-        </p>
-        <div className="flex gap-5 items-center">
-          <img src={Instagram} className="w-[40px] h-[40px]" />
-          <img src={Twitter} className="w-[40px] h-[40px]" />
-          <img src={Facebook} className="w-[40px] h-[40px]" />
+        <div className="flex justify-center items-center gap-10 flex-col lg:flex-row lg:justify-between w-full lg:items-end">
+          <p className="text-xl italic">
+            don’t live a little, Live a{" "}
+            <span className="font-bold underline">Cineplex</span>.
+          </p>
+          <div className="flex gap-5 items-center">
+            <img src={Instagram} className="w-[40px] h-[40px]" />
+            <img src={Twitter} className="w-[40px] h-[40px]" />
+            <img src={Facebook} className="w-[40px] h-[40px]" />
+          </div>
         </div>
-        <p>Copyright 2023. All Rights Reserved</p>
+        <p className="lg:w-full">Copyright 2023. All Rights Reserved</p>
       </div>
     </div>
   );

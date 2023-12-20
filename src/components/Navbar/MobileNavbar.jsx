@@ -44,17 +44,29 @@ export default function MobileNavbar() {
               <div className="flex flex-col justify-start items-center gap-4">
                 <h2>
                   <button onClick={handleOpen}>
-                    <Link to="/Movie-App/">Home</Link>
+                    <Link to="/Movie-App/" className="hover:underline">
+                      Home
+                    </Link>
                   </button>
                 </h2>
                 <h2>
                   <button onClick={handleOpen}>
-                    <Link to="/Movie-App/TopRatedMovies">Top-Rated Movies</Link>
+                    <Link
+                      to="/Movie-App/TopRatedMovies"
+                      className="hover:underline"
+                    >
+                      Top-Rated Movies
+                    </Link>
                   </button>
                 </h2>
                 <h2>
                   <button onClick={handleOpen}>
-                    <Link to="/Movie-App/UpComingMovies">Up-Coming Movies</Link>
+                    <Link
+                      to="/Movie-App/UpComingMovies"
+                      className="hover:underline"
+                    >
+                      Up-Coming Movies
+                    </Link>
                   </button>
                 </h2>
               </div>

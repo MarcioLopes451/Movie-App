@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import rating from "../../images/216411_star_icon (2).png";
 import noMoviePoster from "../../images/no-poster-available.jpg";
+import Back from "../../images/2203523_arrow_back_botton_left_icon (1).png";
 
 export default function MovieDetail() {
   const [movie, setMovie] = useState(null);
   const [movie1, setMovie1] = useState(null);
   const { movieId } = useParams();
+  const navigate = useNavigate();
   const apiKey = "62c0121e68188863d4bc023757512a1c";
   const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
   const movieurl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
@@ -85,9 +87,16 @@ export default function MovieDetail() {
                 <div className="flex flex-col gap-3 mt-5 italic lg:flex-row lg:flex-wrap lg:justify-between">
                   {movie.cast.slice(0, 4).map((actor) => (
                     <Link key={actor.id} to={`/Movie-App/person/${actor.id}`}>
-                      <p>{actor.name}</p>
+                      <p className="hover:underline">{actor.name}</p>
                     </Link>
                   ))}
+                </div>
+                <div className="mt-8 w-full flex justify-center items-center lg:justify-normal">
+                  <img
+                    src={Back}
+                    className="w-[50px] h-[50px]"
+                    onClick={() => navigate(-1)}
+                  />
                 </div>
               </div>
             ) : (

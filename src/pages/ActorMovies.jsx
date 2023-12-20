@@ -1,12 +1,14 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import rating from "../../images/216411_star_icon (2).png";
 import noMoviePoster from "../../images/no-poster-available.jpg";
+import Back from "../../images/2203523_arrow_back_botton_left_icon (1).png";
 
 export default function ActorMovies() {
   const [actor, setActor] = useState(null);
   const [movie, setMovie] = useState(null);
   const { actorId } = useParams();
+  const navigate = useNavigate();
   const apiKey = "62c0121e68188863d4bc023757512a1c";
   const actorUrl = `https://api.themoviedb.org/3/person/${actorId}?api_key=${apiKey}`;
   const actorMovieUrl = `https://api.themoviedb.org/3/person/${actorId}/movie_credits?api_key=${apiKey}`;
@@ -62,6 +64,13 @@ export default function ActorMovies() {
                     </div>
                   </div>
                 )}
+              </div>
+              <div className="mt-8 w-full flex justify-center items-center lg:justify-normal">
+                <img
+                  src={Back}
+                  className="w-[50px] h-[50px]"
+                  onClick={() => navigate(-1)}
+                />
               </div>
             </div>
           </div>
