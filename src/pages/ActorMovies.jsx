@@ -84,7 +84,7 @@ export default function ActorMovies() {
 
           <div className="mt-5">
             {movie ? (
-              <div className="flex justify-center items-center flex-col outline-dashed flex-wrap font-Inria-Serif">
+              <div className="flex justify-center items-center flex-col flex-wrap font-Inria-Serif">
                 <h3 className="font-bold text-center">
                   Movies {actor.name} has featured in:
                 </h3>
