@@ -13,7 +13,7 @@ export default function Footer() {
             <img src={Logo} className="w-[70px] h-[70px]" />
             <h1 className="hidden lg:block text-3xl font-bold">Cineplex</h1>
           </div>
-          <div className="flex justify-between items-center text-xl gap-10">
+          <div className="flex justify-between items-center text-lg gap-10 md:text-xl lg:text-2xl ">
             <Link to="/Movie-App/" className="hover:underline">
               Home
             </Link>

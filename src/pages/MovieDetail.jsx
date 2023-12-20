@@ -94,7 +94,7 @@ export default function MovieDetail() {
                 <div className="mt-8 w-full flex justify-center items-center lg:justify-normal">
                   <img
                     src={Back}
-                    className="w-[50px] h-[50px]"
+                    className="w-[50px] h-[50px] cursor-pointer"
                     onClick={() => navigate(-1)}
                   />
                 </div>

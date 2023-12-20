@@ -57,7 +57,6 @@ function App() {
   );
 }
 
-// eslint-disable-next-line react/prop-types
 const SearchResults = ({ data }) => {
   return (
     <div className="mt-[60px] mx-[20px]">
